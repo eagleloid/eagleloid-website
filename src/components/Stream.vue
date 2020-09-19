@@ -1,9 +1,4 @@
 <template>
-<v-container fluid>
-   <v-row 
-   justify="center"
-   align="end"
-   >
    
       <iframe 
          width="560" 

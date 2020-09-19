@@ -1,16 +1,8 @@
 <template>
-   <div>
-      <v-navigation-drawer
-         clipped
-         fixed
-         v-model="drawer"
-         app
-      >
-         <Timeline :id="'EagleLoid'" :sourceType="'profile'" :options="{ tweetLimit: '3', theme: 'dark'}"></Timeline>
-      </v-navigation-drawer>
-      <v-app-bar app fixed clipped-left>
-         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-         <router-link to="/">
+   <div>      
+      <!-- TODO put something in the drawer -->
+      <v-app-bar app fixed clipped-left>         
+         <router-link title="Home Page" to="/">
             <v-img
                alt="Home Page"
                contain
@@ -31,29 +23,20 @@
          </v-btn>
          <v-btn
          
-         title="Check out merch"
-         href="https://streamlabs.com/eagleloid/#/merch"
+         title="Donate"
+         href="https://streamlabs.com/eagleloid/tip"
          target="_blank"
          >
-         <v-icon left>mdi-store</v-icon> Merch
+         <v-icon left>mdi-currency-usd-circle-outline</v-icon> Donate
          </v-btn>
 
-         <v-btn
-         fab
-         small
-         title="Coming soon"
-         >
-         <v-icon>mdi-account</v-icon>
-         </v-btn>
       </v-app-bar>
    </div> 
 </template>
 
 <script>  
-  import {Timeline} from 'vue-tweet-embed'
   export default {
      components: {
-     Timeline
      },
     data: () => ({
       drawer: false

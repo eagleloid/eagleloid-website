@@ -34,7 +34,7 @@
     data: () => ({
       icons: [
          {
-            image: 'mdi mdi-facebook-box',
+            image: 'mdi mdi-facebook',
             tooltip: 'Muh Facebook',
             link: 'https://www.facebook.com/LordEagle21/?ref=hl'
          },
@@ -49,9 +49,9 @@
             link: 'https://www.twitch.tv/eagleloid'
          },
          {
-            image: 'mdi mdi-mixer',
-            tooltip: 'Mixer Account',
-            link: 'https://mixer.com/eagleloid'
+            image: 'mdi mdi-square-circle',
+            tooltip: 'Byte Account (only on mobile device)',
+            link: 'https://byte.co/@EagleLoid'
          },
          {
             image: 'mdi mdi-youtube',
