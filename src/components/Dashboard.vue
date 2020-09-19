@@ -16,7 +16,10 @@
         <v-col>
           <h1 class="text-center display-2 font-weight-bold mb-3">
           Look, I'm just as lost as you are...
-        </h1>
+          </h1>          
+          <h3 class="text-center display-1 font-weight-bold mb-3">
+          [social links are at the bottom]
+          </h3>
         </v-col>
         
       </v-row>

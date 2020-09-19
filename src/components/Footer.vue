@@ -8,7 +8,7 @@
          <v-card-title class="blue-grey darken-4">
    
             <v-spacer></v-spacer>
-   
+            <!-- FIXME made me cleaner in mobile -->
             <v-btn
                v-for="obj in icons"
                :key="obj.image"
@@ -23,7 +23,7 @@
          </v-card-title>
    
          <v-card-actions class="grey darken-3 justify-center">
-            &copy;2019 — <strong>Eagle Loid</strong>
+            &copy;2020 — <strong>Eagle Loid</strong>
          </v-card-actions>
          </v-card>
       </v-footer>
@@ -33,6 +33,11 @@
   export default {
     data: () => ({
       icons: [
+         {
+            image: 'mdi mdi-discord',
+            tooltip: 'Muh Discord',
+            link: 'https://discord.gg/5vtDhzt'
+         },
          {
             image: 'mdi mdi-facebook',
             tooltip: 'Muh Facebook',
@@ -57,6 +62,11 @@
             image: 'mdi mdi-youtube',
             tooltip: 'Dumb Videos',
             link: 'https://www.youtube.com/channel/UC1yW5MS8Eyh9lMWbHDKQWaw'
+         },
+         {
+            image: 'mdi mdi-lock-reset',
+            tooltip: 'Muh OnlyFans',
+            link: 'http://onlyfans.eagleloid.com'
          }
     ]
     })
