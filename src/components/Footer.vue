@@ -32,6 +32,7 @@
 <script>
   export default {
     data: () => ({
+       // TODO Make a psudo link tree page where these are blown up
       icons: [
          {
             image: 'mdi mdi-discord',
@@ -62,6 +63,11 @@
             image: 'mdi mdi-youtube',
             tooltip: 'Dumb Videos',
             link: 'https://www.youtube.com/channel/UC1yW5MS8Eyh9lMWbHDKQWaw'
+         },
+         {
+            image: 'mdi mdi-snapchat',
+            tooltip: 'Muh Snapchat',
+            link: 'https://www.snapchat.com/add/eagleoid'
          },
          {
             image: 'mdi mdi-lock-reset',
