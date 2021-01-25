@@ -1,7 +1,7 @@
-<template>
-   <div>      
+<template>     
       <!-- TODO put something in the drawer -->
-      <v-app-bar app fixed clipped-left>     
+      <v-app-bar app fixed clipped-left>  
+         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>   
          <!-- FIXME icon needs to adjust for mobile so buttons can be seen -->    
          <router-link title="Home Page" to="/">
             <v-img
@@ -31,7 +31,6 @@
          </v-btn>
 
       </v-app-bar>
-   </div> 
 </template>
 
 <script>  
@@ -39,7 +38,7 @@
      components: {
      },
     data: () => ({
-      drawer: false
+      
     })
   }
   

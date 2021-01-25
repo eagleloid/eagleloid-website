@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import StreamComp from './components/Stream.vue'
 import Admin from './views/Admin.vue'
+import Servers from './components/Servers.vue'
+import Social from './components/Social.vue'
 
 Vue.use(Router)
 
@@ -22,6 +24,16 @@ export default new Router({
       path: '/admin',
       name: 'admin',
       component: Admin
+    },
+    {
+      path: '/servers',
+      name: 'servers',
+      component: Servers
+    },
+    {
+      path: '/social',
+      name: 'social',
+      component: Social
     },
     {
       path: '/about',
