@@ -3,7 +3,7 @@
     <v-app-bar app clipped-left>  
          <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>   
 
-         <v-toolbar-title>Offical Eagle Loid Website</v-toolbar-title>
+         <v-toolbar-title>Official Eagle Loid Website</v-toolbar-title>
          <v-spacer></v-spacer>
          <!-- FIXME make icons change to circle for mobile? -->
          <v-btn   
