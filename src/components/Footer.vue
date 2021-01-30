@@ -5,7 +5,7 @@
          flat
          tile
          >
-         <v-card-title class="blue-grey darken-4">
+         <v-card-title class="d-none d-sm-flex blue-grey darken-4">
    
             <v-spacer></v-spacer>
             <!-- FIXME made me cleaner in mobile -->

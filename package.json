@@ -1,6 +1,6 @@
 {
   "name": "eagleloid-website",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,16 +9,20 @@
   },
   "dependencies": {
     "core-js": "^2.6.12",
+    "firebase": "^8.2.4",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.10",
     "vue-router": "^3.4.9",
-    "vuetify": "^2.4.3"
+    "vuelidate": "^0.7.6",
+    "vuetify": "^2.4.3",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",
     "@vue/cli-plugin-eslint": "^3.12.0",
     "@vue/cli-plugin-pwa": "^4.5.6",
-    "@vue/cli-service": "^3.12.0",
+    "@vue/cli-plugin-vuex": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
