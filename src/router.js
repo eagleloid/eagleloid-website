@@ -5,6 +5,8 @@ import StreamComp from './components/Stream.vue'
 import Admin from './views/Admin.vue'
 import Servers from './components/Servers.vue'
 import Social from './components/Social.vue'
+import Login from './components/Login'
+import Register from './components/Register'
 
 Vue.use(Router)
 
@@ -14,6 +16,16 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
     },
     {
       path: '/live',
