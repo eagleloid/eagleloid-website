@@ -42,7 +42,8 @@ import {
   minLength,
   maxLength,
 } from "vuelidate/lib/validators";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/auth'
 
 export default {
   mixins: [validationMixin],
