@@ -6,6 +6,9 @@ module.exports = {
     devtool: 'source-map'
   },
   pwa: {
-    name: 'EagleLoid Website'
+    name: 'EagleLoid Website',
+    workboxOptions: {
+      skipWaiting: true
+    }
   }
 }
