@@ -7,6 +7,8 @@ import Servers from './components/Servers.vue'
 import Social from './components/Social.vue'
 import Login from './components/Login'
 import Register from './components/Register'
+import Profile from './components/Profile'
+import store from './store/index.js'
 
 Vue.use(Router)
 
@@ -21,6 +23,21 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
+      beforeEnter(to, from, next){
+        var user = store.getters.user     
+        // to and from are "Route" objects. see for more info: https://router.vuejs.org/api/#the-route-object
+        if (user != null && user.loggedIn) {
+          next()
+        }
+        else {
+          next(false) // back from whence you came!
+        }
+      }      
     },
     {
       path: '/register',
@@ -40,7 +57,17 @@ export default new Router({
     {
       path: '/servers',
       name: 'servers',
-      component: Servers
+      component: Servers,
+      beforeEnter(to, from, next){
+        var user = store.getters.user     
+        // to and from are "Route" objects. see for more info: https://router.vuejs.org/api/#the-route-object
+        if (user != null && user.loggedIn) {
+          next()
+        }
+        else {
+          next(false) // back from whence you came!
+        }
+      }
     },
     {
       path: '/social',

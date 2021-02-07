@@ -1,12 +1,6 @@
 <!-- TODO: Make this a modal form to keep the user on the same page -->
 <template>
   <v-row justify="center">
-    <v-alert
-      :value="error"
-      dismissible
-      elevation="5"
-      type="error"
-    ></v-alert>
     <v-col class="my-auto" cols="12" sm="10" md="8" lg="6">
       <v-card ref="form">
         <v-card-title>
@@ -14,7 +8,7 @@
         </v-card-title>
         <v-card-text>
            <v-text-field
-            v-model="form.email"
+            v-model="email"
             :error-messages="emailErrors"
             label="E-mail"
             required
@@ -23,20 +17,25 @@
             @blur="$v.email.$touch()"
           ></v-text-field> 
           <v-text-field
-            v-model="form.password"
+            v-model="password"
             :error-messages="passwordErrors"
             label="Password"
             required
             outlined
-            @input="$v.name.$touch()"
-            @blur="$v.name.$touch()"
+            :type="showPswd ? 'text' : 'password'"
+            :append-icon="showPswd ? 'mdi-eye' : 'mdi-eye-off'"
+            @input="$v.password.$touch()"
+            @blur="$v.password.$touch()"
+            @click:append="showPswd = !showPswd"
           ></v-text-field>      
-          <v-divider class="mt-3"></v-divider>  
-          <div class="text-center" >
-            <v-btn text to="/register">Register account</v-btn>
-          </div>
+          <v-divider class="mt-3"></v-divider>            
         </v-card-text>  
-        <v-divider class="mt-12"></v-divider>  
+        <div class="text-center">
+            <v-btn color="primary" text to="/register">Register account</v-btn>
+            
+            <v-btn color="red" text @click="resetPassword">Reset Password</v-btn>
+          </div>
+        <v-divider class="mt-6"></v-divider>  
         <v-card-actions>
           <v-btn text  @click="clear">clear</v-btn>
           <v-spacer></v-spacer>
@@ -44,6 +43,22 @@
         </v-card-actions>        
       </v-card>
     </v-col>
+    <v-snackbar
+      v-model="snackbar"
+    >
+      {{error}}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-row>
 </template>
 
@@ -64,12 +79,10 @@ export default {
 
   data() {
     return {
-      test: process.env.VUE_APP_TEST,
-
-      form: {
-        email: "",
-        password: "",
-      },
+      snackbar: false,
+      showPswd: false,
+      email: "",
+      password: "",
       error: null,
     };
   },
@@ -91,13 +104,32 @@ export default {
   },
 
   methods: {
-    submit() {
-      this.$v.$touch();
+    resetPassword(){
+      this.$v.email.$touch()
+      if (this.$v.email.$invalid) return;
       firebase
       .auth()
-      .signInWithEmailAndPassword(this.form.email, this.form.password)
+      .sendPasswordResetEmail(this.email)
+      .then(() =>{
+        this.error = "Reset link has been set to the email you entered"
+      })
+      .catch(() =>{
+        this.error = "Something went wrong when trying send reset link. Make sure your email is correct."; // update it
+      })
+      .finally(() =>{
+        this.snackbar = true;
+      })
+    },
+    submit() {
+      this.$v.$touch();
+      if (this.$v.$invalid) return; // exit if bad data
+      firebase
+      .auth()
+      .signInWithEmailAndPassword(this.email, this.password)
       .then(() => {
-        this.$router.replace({ name: "home" });
+        this.$router.replace({ 
+          name: "home" 
+          });
       })
       .catch(err => {
         this.error = err.message;

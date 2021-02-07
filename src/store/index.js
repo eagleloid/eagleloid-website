@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
+// when getting from this use `import store from store/index.js`
 export default new Vuex.Store({
   state: {
     user: {
@@ -10,11 +10,13 @@ export default new Vuex.Store({
       data: null
     }
   },
+  // when calling these, do `store.getters.name` no parenthisies if no payload.
   getters: {
     user(state){
       return state.user
     }
   },
+  // this should only be used in the actions below
   mutations: {
     SET_LOGGED_IN(state, value){
       state.user.loggedIn = value;
@@ -23,6 +25,8 @@ export default new Vuex.Store({
       state.user.data = data;
     }
   },
+  // these should only be used to SET the data. 
+  // eg store.dispatch("name", payload);
   actions: {
     fetchUser({ commit }, user){
       commit("SET_LOGGED_IN", user !== null);

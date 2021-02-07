@@ -114,7 +114,6 @@ export default {
     nameErrors() {
       const errors = [];
       if (!this.$v.form.name.$dirty) return errors;
-      // BUG: might need to use min/max length instead. between is for numbers
       !this.$v.form.name.minLength && errors.push("Username must be between 4 and 25 characters");
       !this.$v.form.name.maxLength && errors.push("Username must be between 4 and 25 characters");
       !this.$v.form.name.required && errors.push("Username is required");
