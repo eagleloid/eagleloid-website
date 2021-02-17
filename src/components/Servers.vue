@@ -12,8 +12,20 @@
           </v-list-item-title>
           
           <v-chip
+            v-if="server.status=='Active'"
             class="ma-1"
             color="success"
+            label
+          >
+          <v-icon left>
+            mdi-access-point
+          </v-icon>
+            {{server.status}}
+          </v-chip>  
+          <v-chip
+            v-else
+            class="ma-1"
+            color="error"
             label
           >
           <v-icon left>
@@ -51,7 +63,29 @@
 <script>
 // TODO: put the logic here that checks the game server's basic stats.
 // will probably need in import the third party solution.
+import firebase from "firebase/app"
+import 'firebase/database'
 export default {
+
+  created(){
+    firebase.database().ref('/gameServers').get().then((snapshot) =>{
+      this.serverList = snapshotTOArray(snapshot);
+    }).catch(err =>{
+      this.console.log(err.message)
+    });
+
+    let snapshotTOArray = snapshot =>{
+      var returnArr = [];
+      snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+      });
+
+      return returnArr;
+    };
+  },
   data: () => ({
     serverList: [
       {
@@ -77,5 +111,22 @@ export default {
       },
     ],
   }),
+  methods: {
+    snapshotTOArray(snapshot){
+      var returnArr = [];
+      snapshot.forEach(function(childSnapshot) {
+        var item = childSnapshot.val();
+        item.key = childSnapshot.key;
+
+        returnArr.push(item);
+      });
+
+      return returnArr;
+    }
+  },
+  computed: {
+    
+    // TODO: somehow make firebase work with this so it's actually realtime
+  }
 };
 </script>

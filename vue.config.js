@@ -2,8 +2,13 @@ module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
-
+  configureWebpack: {
+    devtool: 'source-map'
+  },
   pwa: {
-    name: 'EagleLoid Website'
+    name: 'EagleLoid Website',
+    workboxOptions: {
+      skipWaiting: true
+    }
   }
 }

@@ -8,7 +8,6 @@
          <v-card-title class="d-none d-sm-flex blue-grey darken-4">
    
             <v-spacer></v-spacer>
-            <!-- FIXME made me cleaner in mobile -->
             <v-btn
                v-for="obj in icons"
                :key="obj.image"
@@ -32,7 +31,6 @@
 <script>
   export default {
     data: () => ({
-       // TODO Make a psudo link tree page where these are blown up
       icons: [
          {
             image: 'mdi mdi-discord',

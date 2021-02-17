@@ -24,7 +24,6 @@
 <script>
   export default {
     data: () => ({
-       // TODO Make a psudo link tree page where these are blown up
       icons: [
          {
             image: 'mdi mdi-discord',
